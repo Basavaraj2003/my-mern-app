@@ -1,26 +1,21 @@
-# Configuration file for MegaLinter
-#
-# See all available variables at https://megalinter.io/latest/config-file/ and in
-# linters documentation
+# MegaLinter configuration for a JavaScript/TypeScript project using Jenkins
 
-# all, none, or list of linter keys
+VALIDATE_ALL_CODEBASE: true
+
+ENABLE_LINTERS:
+  - ESLINT
+  - PRETTIER
+  - SPELL
+  - JSCPD
+
 APPLY_FIXES: all
 
-# If you use ENABLE variable, all other languages/formats/tooling-formats will
-# be disabled by default
-# ENABLE:
-
-# If you use ENABLE_LINTERS variable, all other linters will be disabled by
-# default
-# ENABLE_LINTERS:
-
-# DISABLE:
-  # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes
-  # - SPELL # Uncomment to disable checks of spelling mistakes
+UPLOAD_REPORTS_TO_FILEIO: true
 
 SHOW_ELAPSED_TIME: true
 
-FILEIO_REPORTER: true
+GIT_MAIN_BRANCH: main
 
-# Uncomment if you want MegaLinter to detect errors but not block CI to pass
-# DISABLE_ERRORS: true
+# ESLINT_CONFIG_FILE: .eslintrc.js
+# PRETTIER_CONFIG_FILE: .prettierrc
+# EXCLUDED_DIRECTORIES: node_modules,build,dist
