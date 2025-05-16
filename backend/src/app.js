@@ -1,16 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const projectRoutes = require('./routes/projectRoutes');
+const express = require('express')
+const cors = require('cors')
+const projectRoutes = require('./routes/projectRoutes')
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const app = express()
 
-// Use the project routes
-app.use('/api/projects', projectRoutes);
+app.use(cors())
+app.use(express.json())
+app.use('/api', projectRoutes)
 
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-module.exports = app;
+module.exports = app

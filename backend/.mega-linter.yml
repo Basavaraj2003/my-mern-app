@@ -1,9 +1,0 @@
-LINTERS:
-  JAVASCRIPT_ES:
-    ENABLE: true
-  MARKDOWN_MARKDOWNLINT:
-    ENABLE: true
-  YAML_YAMLLINT:
-    ENABLE: true
-
-FILTER_REGEX_EXCLUDE: "node_modules|uploads|reports"

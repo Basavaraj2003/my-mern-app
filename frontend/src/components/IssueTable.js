@@ -1,14 +1,14 @@
 // src/components/IssueTable.js
-import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import React from 'react'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 
-function IssueTable({ issues }) {
+function IssueTable ({ issues }) {
   const getColor = severity => {
-    if (severity === 'High') return '#e53e3e';
-    if (severity === 'Medium') return '#ecc94b';
-    if (severity === 'Low') return '#38a169';
-    return '#000';
-  };
+    if (severity === 'High') return '#e53e3e'
+    if (severity === 'Medium') return '#ecc94b'
+    if (severity === 'Low') return '#38a169'
+    return '#000'
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -37,7 +37,7 @@ function IssueTable({ issues }) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
 
-export default IssueTable;
+export default IssueTable

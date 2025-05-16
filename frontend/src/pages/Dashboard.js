@@ -1,21 +1,13 @@
 // src/pages/Dashboard.js
-import React from 'react';
-import ScanSummary from '../components/ScanSummary';
+import React from 'react'
 
-const mockSummary = {
-  totalScans: 12,
-  complianceRate: 85,
-  issues: 34,
-};
-
-function Dashboard() {
+function Dashboard () {
   return (
     <div>
-      <h2>Dashboard</h2>
-      <ScanSummary summary={mockSummary} />
-      {/* Add charts or analytics here */}
+      <h1>Dashboard</h1>
+      <p>Welcome to the Code Compliance System dashboard.</p>
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

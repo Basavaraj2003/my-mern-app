@@ -1,20 +1,25 @@
-const express = require('express');
-const router = express.Router();
-const projectController = require('../controllers/projectController');
+const express = require('express')
+const fs = require('fs')
+const path = require('path')
+const router = express.Router()
 
-// Create a project
-router.post('/', projectController.createProject);
+// GET /api/reports/latest - returns latest MegaLinter JSON report
+router.get('/reports/latest', (req, res) => {
+  // Adjust this path if your reports folder is elsewhere
+  const reportPath = path.join(__dirname, '../../reports/megalinter-report.json')
+  fs.readFile(reportPath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading MegaLinter report:', err)
+      return res.status(500).json({ error: 'Report not found' })
+    }
+    try {
+      const report = JSON.parse(data)
+      res.json(report)
+    } catch (parseErr) {
+      console.error('Error parsing MegaLinter report:', parseErr)
+      res.status(500).json({ error: 'Invalid report format' })
+    }
+  })
+})
 
-// Get all projects
-router.get('/', projectController.getProjects);
-
-// Get a single project by ID
-router.get('/:id', projectController.getProject);
-
-// Update a project
-router.put('/:id', projectController.updateProject);
-
-// Delete a project
-router.delete('/:id', projectController.deleteProject);
-
-module.exports = router;
+module.exports = router

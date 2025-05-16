@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Results() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/projects')
+      .then(res => res.json())
+      .then(data => setProjects(data));
+  }, []);
+
   return (
     <div>
-      <h1>Results</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Line</th>
-            <th>Rule</th>
-            <th>Severity</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>10</td>
-            <td>no-console</td>
-            <td>High</td>
-            <td>Unexpected console statement</td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>semi</td>
-            <td>Low</td>
-            <td>Missing semicolon</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Results</h2>
+      <ul>
+        {projects.map(project => (
+          <li key={project._id}>
+            <strong>{project.name}</strong> - {project.description}
+            <br />
+            <a
+              href={`http://localhost:5000${project.reportPath}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View MegaLinter Report
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
